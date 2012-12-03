@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Сколько ресурсов вашего бизнеса расходуется впустую?</title>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="description" content="" />
+	<meta name="author" content="Oleg Chulakov Studio" />
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+	
+	<link rel="stylesheet" href="css/reset.css" media="all" />
+	<link rel="stylesheet" href="css/style.css" media="all" />
+	
+	<script src="js/jquery-1.8.2.js"></script>
+	<script src="js/jquery.easing.min.1.3.js"></script>
+	<script src="js/jquery.maskedinput-1.3.min.js"></script>
+	<script src="js/scripts.js"></script>
+
+	<!-- 
+	<script type="text/javascript" src="http://userapi.com/js/api/openapi.js?50"></script>
+	<script type="text/javascript">VK.init({apiId: 3046637, onlyWidgets: true});</script>
+	 -->
+	 
+	<!--[if lt IE 9]>
+		<script type="text/javascript" src="js/html5.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/ie.css" media="all" />
+	<![endif]--> 
+</head>
+<body>
+	<!-- 
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+	</script>
+	<script type="text/javascript"> 
+	  var _gaq = _gaq || []; 
+	  _gaq.push(['_setAccount', 'UA-17087923-3']); 
+	  _gaq.push(['_trackPageview']); 
+	
+	  (function() { 
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; 
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; 
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); 
+	  })(); 
+	</script> 
+	 -->
+	
+	<div class="wrapper">
+		<section class="form">
+			<header class="header">
+				<div class="small-title">Сколько ресурсов вашего бизнеса расходуется впустую?</div>
+				<div class="header-title">Ответьте на 8 простых вопросов и получите персональные рекомендации</div>
+				<div class="small-title">Вся предоставленная вами информация строго конфиденциальна <br> и нужна только для расчета</div>
+			</header>
+			<form method="get" action="#">
+				<div class="side">
+					<dl id="q1">
+						<dt>
+							<span class="number">1</span>
+							<label class="question" for="peoplesOverall">
+								Сколько сотрудников в вашей компании?
+							</label>
+						</dt>
+						<dd>
+							<input type="text" class="text-input numberFilter" name="peoplesOverall" id="peoplesOverall" value="10">
+							<span class="people">человек</span>
+						</dd>
+					</dl>
+					<dl id="q2">
+						<dt><span class="number">2</span><span class="question">
+							Есть ли у сотрудников доступ <br> в социальные сети, веб-мессенджеры <br> и на развлекательные порталы?
+						</span></dt>
+						<dd>
+							<div class="radio-wrapper">
+								<input type="radio" class="radio" name="social" id="socialEnabled" checked="checked">
+								<label class="button-small checked" for="socialEnabled">Да</label>
+							</div>
+							<div class="radio-wrapper">
+								<input type="radio" class="radio" name="social" id="socialDisabled">
+								<label class="button-small" for="socialDisabled">Нет</label>
+							</div>
+						</dd>
+					</dl>
+					<dl id="q3">
+						<dt><span class="number">3</span><span class="question">
+							Какое время допустимо для опоздания?
+						</span></dt>
+						<dd>
+							<div class="radio-wrapper">
+								<input type="radio" class="radio" name="late" id="lateNo" value="0">
+								<label class="button-big" for="lateNo">
+									Опаздывать нельзя
+								</label>
+							</div>
+							<div class="radio-wrapper">
+								<input type="radio" class="radio" name="late" id="late5" value="5">
+								<label class="button-big" for="late5">
+									5 минут
+								</label>
+							</div>
+							<div class="radio-wrapper">
+								<input type="radio" class="radio" name="late" id="late10" value="10">
+								<label class="button-big" for="late10">
+									10 минут
+								</label>
+							</div>
+							<div class="radio-wrapper">
+								<input type="radio" class="radio" name="late" id="late15" value="15" checked="checked">
+								<label class="button-big checked" for="late15">
+									15 минут
+								</label>
+							</div>
+						</dd>
+					</dl>
+					<dl id="q4">
+						<dt><span class="number">4</span><label class="question" for="wage">
+							Сколько в месяц вы тратите <br> на заработную плату сотрудников? 
+						</label></dt>
+						<dd>
+							<input type="text" class="text-input numberFilter" name="wage" id="wage" value="150000">
+							<span class="rub">рублей</span>
+						</dd>
+					</dl>
+				</div>
+				<div class="side">
+					<dl id="q5">
+						<dt><span class="number">5</span><label class="question" for="square">
+							Какова площадь вашего помещения?
+						</label></dt>
+						<dd>
+							<input type="text" class="text-input numberFilter" name="square" id="square" value="40">
+							м<sup>2</sup>
+						</dd>
+					</dl>
+					<dl id="q6">
+						<dt><span class="number">6</span><span class="question">
+							Используете ли вы энергосберегающие лампы? 
+						</span></dt>
+						<dd>
+							<div class="radio-wrapper">
+								<input type="radio" class="radio" name="lamps" id="lampsYes">
+								<label class="button-small" for="lampsYes">Да</label>
+							</div>
+							<div class="radio-wrapper">
+								<input type="radio" class="radio" name="lamps" id="lampsNo" checked="checked">
+								<label class="button-small checked" for="lampsNo">Нет</label>
+							</div>
+						</dd>
+					</dl>
+					<dl id="q7">
+						<dt><span class="number">7</span><label class="question" for="smokers">
+							Сколько сотрудников в вашей компании курят?
+						</label></dt>
+						<dd>
+							<input type="text" class="text-input numberFilter" name="smokers" id="smokers" value="1">
+							<span class="people">человек</span>
+						</dd>
+					</dl>
+					<dl id="q8">
+						<dt><span class="number">8</span><span class="question">
+							Используете ли вы корпоративные тарифы для мобильной связи?
+						</span></dt>
+						<dd>
+							<div class="radio-wrapper">
+								<input type="radio" class="radio" name="mobile" id="mobileYes">
+								<label class="button-small" for="mobileYes">Да</label>
+							</div>
+							<div class="radio-wrapper">
+								<input type="radio" class="radio" name="mobile" id="mobileNo" checked="checked">
+								<label class="button-small checked" for="mobileNo">Нет</label>
+							</div>
+						</dd>
+					</dl>
+				</div>
+				<div class="clear"></div>
+				<a href="#" class="button calculate">
+					<ins class="default"></ins>
+					<ins class="hover"></ins>
+					<ins class="active"></ins>
+	 				<span>Рассчитать</span>
+				</a>
+				<div class="error-message">
+					Для расчета нам нужны все данные. <br>
+					Если вы не знаете точно, напишите примерно
+				</div>
+				<div class="clear"></div>
+			</form>
+		</section>
+		<section class="infographic">
+			<div class="purse"></div>
+			<h1 class="spend-title">Вы тратите впустую</h1>
+			<div class="monets">
+				<div class="monet1 pos1">
+					<div class="monet-numbers"></div>
+					<div class="monet-text">
+						из-за использования <br>
+						ламп накаливания 
+					</div>
+				</div>
+				<div class="monet1 pos2">
+					<div class="monet-numbers"></div>
+					<div class="monet-text">
+						из-за переплат <br>
+						на связь 
+					</div>
+				</div>
+				<div class="monet1 pos3">
+					<div class="monet-numbers"></div>
+					<div class="monet-text">
+						из-за <span class="hrs"></span> часов, потраченных <br>
+						на перекуры
+					</div>
+				</div>
+				<div class="monet1 pos4">
+					<div class="monet-numbers"></div>
+					<div class="monet-text">
+						из-за <span class="hrs"></span> часов, потраченных <br>
+						на социальные сети
+					</div>
+				</div>
+				<div class="monet1 pos5">
+					<div class="monet-numbers"></div>
+					<div class="monet-text">
+						из-за <span class="hrs"></span> часов, потраченных <br>
+						на опоздания
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+			<h1 class="overall">
+				Итого, в год вы тратите впустую <span class="red"></span>
+			</h1>
+			<div class="whatToDo-wrapper">
+				<a href="#" class="button whatToDo">
+					<ins class="default"></ins>
+					<ins class="hover"></ins>
+					<ins class="active"></ins>
+	 				<span>Что делать?</span>
+				</a>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</section>
+		<section class="recommendations">
+			<h1>Расходы уменьшатся, если...</h1>
+			<div class="banner-wrapper">
+				<div class="tele2-banner">
+					<div class="banner-title">Как платить за&nbsp;связь меньше?</div>
+					<form action="#" method="get">
+						<label for="name">Ваше имя</label>
+						<input type="text" name="name" id="name" class="banner-input wordFilter">
+						
+						<label for="phoneNum">Телефон для связи</label>
+						<input type="text" name="phoneNum" id="phoneNum" class="banner-input">
+						<div class="message" style="visibility:visible;">
+							Ваша заявка принята
+						</div>
+						<div class="input-button">
+							<input type="submit" value="Пусть мне расскажут">
+							<ins class="default"></ins>
+							<ins class="hover"></ins>
+							<ins class="active"></ins>
+						</div>
+					</form>
+					<div class="banner-logo">
+						<img src="images/banner-logo.png" alt="" width="76" height="47">
+					</div>
+				</div>
+				<!-- <ul>
+					<li>
+						<div class="fb-like" data-send="false" data-layout="button_count" data-width="200" data-show-faces="false" data-colorscheme="dark" data-font="arial"></div>
+					</li>
+					<li>
+						<div id="vk_like"></div>
+						<script type="text/javascript">
+							VK.Widgets.Like("vk_like", {type: "mini", verb: 1});
+						</script>
+					</li>
+					<li>
+						<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+					</li>
+				</ul> -->
+			</div>
+				
+			<dl id="advice-social">
+				<dt>
+					Отключить социальные сети
+				</dt>
+				<dd>
+					В среднем сотрудник тратит на социальные сети 30 минут в день.
+				</dd>
+			</dl>
+			<dl id="advice-mobile">
+				<dt>
+					Сравнить тарифы для бизнеса
+				</dt>
+				<dd>
+					Новые тарифы чаще всего выгоднее старых.
+				</dd>
+			</dl>
+			<dl id="advice-mobile2">
+				<dt>
+					Подключить тарифы для бизнеса
+				</dt>
+				<dd>
+					Тарифы для бизнеса – это оптовые тарифы, а опт всегда дешевле.
+				</dd>
+			</dl>
+			<dl id="advice-smoke">
+				<dt>
+					Меньше курить
+				</dt>
+				<dd>
+					На 8 сигарет уходит не менее 40 минут рабочего времени.
+				</dd>
+			</dl>
+			<dl id="advice-late">
+				<dt>
+					Следить за опозданиями
+				</dt>
+				<dd>
+					<img src="images/smile.png" alt="" width="30" height="29">
+				</dd>
+			</dl>
+			<dl id="advice-lamps">
+				<dt>
+					Заменить лампы
+				</dt>
+				<dd>
+					Энергосберегающие лампы в 4-5 раз выгоднее ламп накаливания.
+				</dd>
+			</dl>
+			
+			<a href="#" class="try">Попробовать еще раз<img src="images/try.png" alt="" width="16" height="16"></a>
+			
+		</section>
+	</div>
+</body>
+</html>
