@@ -1,6 +1,9 @@
-*+html 
-{
-	display:inline;
-	zoom:1;
+input.text-input {
+	vertical-align: middle;
+	padding-top: 10px;
+	height: 29px;
 }
 
+.main-form dd {
+	vertical-align: middle;
+}

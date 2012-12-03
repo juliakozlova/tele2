@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 	<title>Сколько ресурсов вашего бизнеса расходуется впустую?</title>
 	<meta charset="utf-8" />
@@ -8,6 +8,15 @@
 	<meta name="author" content="Oleg Chulakov Studio" />
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
 	
+	
+	<meta property="og:url" content="http://47news.tele2.ru" />
+	<meta property="og:type" content="website" />
+	<meta property="og:image" content="http://47news.tele2.ru/images/social.png"/> 
+	<meta property="og:title" content="Сколько ресурсов вашего бизнеса расходуется впустую?" />
+	<meta property="og:description" content="Тест на 47news.tele2.ru показал,  на чем можно сэкономить" />
+	
+	<link rel="image_src" href="http://47news.tele2.ru/images/social_big.png" />
+
 	<link rel="stylesheet" href="css/reset.css" media="all" />
 	<link rel="stylesheet" href="css/style.css" media="all" />
 	
@@ -16,29 +25,18 @@
 	<script src="js/jquery.maskedinput-1.3.min.js"></script>
 	<script src="js/scripts.js"></script>
 
-	<!-- 
-	<script type="text/javascript" src="http://userapi.com/js/api/openapi.js?50"></script>
-	<script type="text/javascript">VK.init({apiId: 3046637, onlyWidgets: true});</script>
-	 -->
-	 
+	<script type="text/javascript" src="http://vk.com/js/api/share.js?11" charset="windows-1251"></script>
+
 	<!--[if lt IE 9]>
 		<script type="text/javascript" src="js/html5.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/ie.css" media="all" />
 	<![endif]--> 
 </head>
 <body>
-	<!-- 
-	<script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));
-	</script>
+	<div id="fb-root"></div>
 	<script type="text/javascript"> 
 	  var _gaq = _gaq || []; 
-	  _gaq.push(['_setAccount', 'UA-17087923-3']); 
+	  _gaq.push(['_setAccount', 'UA-36438675-5']); 
 	  _gaq.push(['_trackPageview']); 
 	
 	  (function() { 
@@ -47,8 +45,11 @@
 	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); 
 	  })(); 
 	</script> 
-	 -->
-	
+	<section class="additional-header">
+		<div class="header-shell">
+			<a href="http://47news.ru/" class="logo"><img src="images/logo.png" alt="" width="231" height="70"></a>
+		</div>
+	</section>
 	<div class="wrapper">
 		<section class="form">
 			<header class="header">
@@ -56,7 +57,7 @@
 				<div class="header-title">Ответьте на 8 простых вопросов и получите персональные рекомендации</div>
 				<div class="small-title">Вся предоставленная вами информация строго конфиденциальна <br> и нужна только для расчета</div>
 			</header>
-			<form method="get" action="#">
+			<div class="main-form">
 				<div class="side">
 					<dl id="q1">
 						<dt>
@@ -66,7 +67,7 @@
 							</label>
 						</dt>
 						<dd>
-							<input type="text" class="text-input numberFilter" name="peoplesOverall" id="peoplesOverall">
+							<input type="text" class="text-input numberFilter" name="peoplesOverall" id="peoplesOverall" value="">
 							<span class="people">человек</span>
 						</dd>
 					</dl>
@@ -177,25 +178,27 @@
 					</dl>
 				</div>
 				<div class="clear"></div>
-				<a href="#" class="button calculate">
+				<div class="button" id="calculate">
 					<ins class="default"></ins>
 					<ins class="hover"></ins>
 					<ins class="active"></ins>
 	 				<span>Рассчитать</span>
-				</a>
+				</div>
 				<div class="error-message">
 					Для расчета нам нужны все данные. <br>
 					Если вы не знаете точно, напишите примерно
 				</div>
 				<div class="clear"></div>
-			</form>
+			</div>
 		</section>
 		<section class="infographic">
+			<div class="purse"></div>
 			<div class="purse"></div>
 			<h1 class="spend-title">Вы тратите впустую</h1>
 			<div class="monets">
 				<div class="monet1 pos1">
 					<div class="monet-numbers"></div>
+					<div class="monet-rubls"></div>
 					<div class="monet-text">
 						из-за использования <br>
 						ламп накаливания 
@@ -203,6 +206,7 @@
 				</div>
 				<div class="monet1 pos2">
 					<div class="monet-numbers"></div>
+					<div class="monet-rubls"></div>
 					<div class="monet-text">
 						из-за переплат <br>
 						на связь 
@@ -210,6 +214,7 @@
 				</div>
 				<div class="monet1 pos3">
 					<div class="monet-numbers"></div>
+					<div class="monet-rubls"></div>
 					<div class="monet-text">
 						из-за <span class="hrs"></span> часов, потраченных <br>
 						на перекуры
@@ -217,6 +222,7 @@
 				</div>
 				<div class="monet1 pos4">
 					<div class="monet-numbers"></div>
+					<div class="monet-rubls"></div>
 					<div class="monet-text">
 						из-за <span class="hrs"></span> часов, потраченных <br>
 						на социальные сети
@@ -224,6 +230,7 @@
 				</div>
 				<div class="monet1 pos5">
 					<div class="monet-numbers"></div>
+					<div class="monet-rubls"></div>
 					<div class="monet-text">
 						из-за <span class="hrs"></span> часов, потраченных <br>
 						на опоздания
@@ -235,12 +242,12 @@
 				Итого, в год вы тратите впустую <span class="red"></span>
 			</h1>
 			<div class="whatToDo-wrapper">
-				<a href="#" class="button whatToDo">
+				<div class="button" id="whatToDo">
 					<ins class="default"></ins>
 					<ins class="hover"></ins>
 					<ins class="active"></ins>
 	 				<span>Что делать?</span>
-				</a>
+				</div>
 				<div class="clear"></div>
 			</div>
 			<div class="clear"></div>
@@ -256,7 +263,7 @@
 						
 						<label for="phoneNum">Телефон для связи</label>
 						<input type="text" name="phoneNum" id="phoneNum" class="banner-input">
-						<div class="message" style="visibility:visible;">
+						<div class="message" style="visibility:hidden;">
 							Ваша заявка принята
 						</div>
 						<div class="input-button">
@@ -269,22 +276,25 @@
 					<div class="banner-logo">
 						<img src="images/banner-logo.png" alt="" width="76" height="47">
 					</div>
-				</div>
-				<!-- <ul>
+				</div>  
+				<ul class="social">
 					<li>
-						<div class="fb-like" data-send="false" data-layout="button_count" data-width="200" data-show-faces="false" data-colorscheme="dark" data-font="arial"></div>
+						<fb:like href="http://47news.tele2.ru/" send="false" layout="button_count" width="450" show_faces="true" font="arial"></fb:like>
 					</li>
 					<li>
-						<div id="vk_like"></div>
-						<script type="text/javascript">
-							VK.Widgets.Like("vk_like", {type: "mini", verb: 1});
-						</script>
+						<script type="text/javascript"><!--
+						document.write(VK.Share.button(false,{type: "round", text: "Поделиться", image: 'http://47news.tele2.ru/images/social_big.png'}));
+						--></script>
 					</li>
 					<li>
 						<a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
 						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 					</li>
-				</ul> -->
+					<li>
+						<a target="_blank" class="mrc__plugin_uber_like_button" href="http://connect.mail.ru/share" data-mrc-config="{'cm' : '1', 'ck' : '1', 'sz' : '20', 'st' : '2', 'tp' : 'ok'}">Нравится</a>
+						<script src="http://cdn.connect.mail.ru/js/loader.js" type="text/javascript" charset="UTF-8"></script>
+					</li>
+				</ul>
 			</div>
 				
 			<dl id="advice-social">
@@ -336,7 +346,7 @@
 				</dd>
 			</dl>
 			
-			<a href="#" class="try">Попробовать еще раз</a>
+			<a href="#" class="try">Попробовать еще раз<img src="images/try.png" alt="" width="16" height="16"></a>
 			
 		</section>
 	</div>

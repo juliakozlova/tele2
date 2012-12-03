@@ -97,7 +97,7 @@ sup {
 	font-size: 38px;
 	font-weight: bold;
 	padding-bottom: 10px;
-	color: #8dc63f;
+	color: #81a584;
 }
 
 
@@ -119,12 +119,12 @@ sup {
 	margin-left: 20px;
 }
 
-form dd {
+.main-form dd {
 	margin-left: 30px;
 	margin-bottom: 30px;
 }
 
-form dt {
+.main-form dt {
 	margin-bottom: 10px;
 }
 
@@ -226,6 +226,7 @@ form dt {
 /* Button */
 
 .button, .button ins {
+	cursor: pointer;
 	font-size: 36px;
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight: bold;
@@ -302,14 +303,21 @@ ins.active {
 	top: -400px;
 	left: 50%;
 	z-index: 100;
-	width: 756px;
-	height: 399px;
+	width: 771px;
+	height: 437px;
 	margin-left: -380px;
 	background: url(../images/purse.png) 0 0 no-repeat;
 }	
 
+.purse + .purse {
+	z-index: 50;
+	background: url(../images/purse_back.jpg) 0 0 no-repeat;
+}
+
 .spend-title {
-	margin-top: -40px;
+	position: relative;
+	z-index: 90;
+	margin-top: -100px;
 	text-align: center;
 	width: 756px;
 	/*padding-top: 420px;*/
@@ -317,6 +325,7 @@ ins.active {
 
 .monets {
 	position: relative;
+	z-index: 80;
 	height: 1350px;
 }
 
@@ -324,6 +333,8 @@ ins.active {
 	/*display: none;*/
 	top: -1000px;
 }
+
+
 
 .monets ins {
 	font-size: 0;
@@ -384,25 +395,31 @@ div.monet-text {
 	height: 230px;
 	padding-left: 37px;
 	padding-top: 40px;
-	background: url(../images/m1.png) 0 0 no-repeat;
+	background: url(../images/m1_.png) 0 0 no-repeat;
 	vertical-align: top;
 }
 
-.monet1.ths {
-	background: url(../images/m1_ths.png) 0 0 no-repeat;
+.monet1 .monet-rubls {
+	height: 28px;
+	width: 112px;
+	background: url(../images/m1_r.png) 0 0 no-repeat; 
 }
 
-.monet1.mln {
-	background: url(../images/m1_mln.png) 0 0 no-repeat;
+/* Тысяча рублей*/
+.monet1.ths .monet-rubls {
+	background: url(../images/m1_r.png) 0 -90px no-repeat;
 }
 
-
+/* Миллион рублей */
+.monet1.mln .monet-rubls {
+	background: url(../images/m1_r.png) 0 -115px no-repeat;
+}
 
 .monet1 .monet-text {
 	width: 350px;
 	color: #6f736a;
 	margin-left: -37px;
-	padding-top: 72px;
+	padding-top: 35px;
 }
 
 .monet1 ins {
@@ -472,19 +489,30 @@ div.monet-text {
 	padding-left: 30px;
 	padding-top: 75px;
 	color: #bfa76d;
-	background: url(../images/m2.png) 0 0 no-repeat;
+	background: url(../images/m2_.png) 0 0 no-repeat;
 }
 
-.monet2.ths {
-	background: url(../images/m2_ths.png) 0 0 no-repeat;
+.monet2 .monet-numbers {
+	margin-bottom: 5px;
 }
 
-.monet2.mln {
-	background: url(../images/m2_mln.png) 0 0 no-repeat;
+.monet2 .monet-rubls {
+	width: 138px;
+	height: 27px;
+	margin-left: 10px;
+	background: url(../images/m2_r.png) 0 0px no-repeat;
+}
+
+.monet2.ths .monet-rubls {
+	background: url(../images/m2_r.png) 0 -103px no-repeat;
+}
+
+.monet2.mln .monet-rubls {
+	background: url(../images/m2_r.png) 0 -140px no-repeat;
 }
 
 .monet2 .monet-text {
-	padding-top: 102px;
+	padding-top: 65px;
 	margin-left: -30px;
 }
 
@@ -502,13 +530,13 @@ div.monet-text {
 }
 
 .monet2 .x2 {
-	width: 80px;
-	background-position: -80px 0;
+	width: 75px;
+	background-position: -90px 0;
 }
 
 .monet2 .x3 {
-	width: 80px;
-	background-position: -190px 0;
+	width: 75px;
+	background-position: -192px 0;
 }
 
 .monet2 .x4 {
@@ -529,6 +557,10 @@ div.monet-text {
 .monet2 .x7 {
 	width: 80px;
 	background-position: -600px 0;
+}
+
+.monet2 .x7 + .x0 {
+	margin-left: -12px;
 }
 
 .monet2 .x7 + .x1 {
@@ -573,7 +605,7 @@ div.monet-text {
 }
 
 .monet2 .x9 {
-	width: 70px;
+	width: 75px;
 	background-position: -811px 0;
 }
 
@@ -583,6 +615,7 @@ div.monet-text {
 }
 
 
+
 .monet3 {
 	font-size: 0;
 	width: 317px;
@@ -590,26 +623,33 @@ div.monet-text {
 	padding-left: 30px;
 	padding-top: 113px;
 	color: #bfa76d;
-	background: url(../images/m3.png) 0 0 no-repeat;
+	background: url(../images/m3_.png) 0 0 no-repeat;
 }
 
-.monet3.rubl {
-	background: url(../images/m3_rubl.png) 0 0 no-repeat;
+.monet3 .monet-rubls {
+	width: 176px;
+	height: 42px;
+	margin-left: 20px;
+	background: url(../images/m3_r.png) 0 5px no-repeat;
 }
 
-.monet3.rublya {
-	background: url(../images/m3_rublya.png) 0 0 no-repeat;
+.monet3.rubl .monet-rubls {
+	background: url(../images/m3_r.png) 0 -37px no-repeat;
 }
 
-.monet3.ths {
-	background: url(../images/m3_ths.png) 0 0 no-repeat;
+.monet3.rublya .monet-rubls {
+	background: url(../images/m3_r.png) 0 -84px no-repeat;
 }
-.monet3.mln {
-	background: url(../images/m3_mln.png) 0 0 no-repeat;
+
+.monet3.ths .monet-rubls {
+	background: url(../images/m3_r.png) 0 -127px no-repeat;
+}
+.monet3.mln .monet-rubls {
+	background: url(../images/m3_r.png) 0 -172px no-repeat;
 }
 
 .monet3 .monet-text {
-	padding-top: 130px;
+	padding-top: 80px;
 	margin-left: -30px;
 }
 
@@ -736,9 +776,10 @@ div.monet-text {
 	margin-bottom: 70px;
 }
 
-.whatToDo {
+.whatToDo-wrapper .button {
 	float: none;
 	margin: 0 auto;
+	width: 279px;
 }
 
 .recommendations {
@@ -759,7 +800,7 @@ div.monet-text {
 .recommendations dt {
 	font-size: 24px;
 	font-weight: bold;
-	color: #8dc63f;
+	color: #81a584;
 }
 
 .recommendations dd {
@@ -925,12 +966,46 @@ div.monet-text {
 	display: block;
 }
 
+.social {
+	margin-bottom: 10px;
+}
+
+.social li {
+	margin-bottom: 15px;
+}
 
 
+/* Additional styles */
 
 
+.additional-header {
+	position: relative;
+	z-index: 150;
+	padding-top: 15px;
+	height: 93px;
+	background: url(../images/header.jpg) 0 0 repeat-x;
+}
 
+.header-shell {
+	padding-left: 20px;
+	width: 880px;
+	margin: 0 auto;
+	padding: 0 50px 40px 70px;
+}
 
+.fb_iframe_widget,
+.social li:first-child,
+.social li:first-child span {
+	display: block !important;
+	width: 124px !important;
+	height: 20px !important;
+}
+
+/*.social li:first-child iframe {
+	width: auto !important;
+	height: auto !important;	
+}
+*/
 
 
 

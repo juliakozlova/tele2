@@ -35,7 +35,7 @@ $(document).ready(function(){
 			event.preventDefault();
 		}
 	});
-	
+
 	var jVal = {
 		"peoplesCheck": function () {
 			var e = $("#peoplesOverall");
@@ -121,21 +121,20 @@ $(document).ready(function(){
 				jVal.errors = true;
 				errorLabel.removeClass('valid').addClass('error');
 			}
-		}
-	};
-
-	jVal.errors = false;
-
-	var createInfographics =  function () {
+		},
+		"createInfographics": function () {
 			if(jVal.errors) {
 				$(".error-message").fadeIn();
 				flyCheck();
 			} else {
 				//запретить нажимать несколько раз
+				$('.calculate').click(function (){
+					return false;
+				});
+				
 				$(".error-message").hide();
 				calculate();
 				
-				//alert("Анимируем инфографику")
 				$(".form").slideUp(600);
 
 				$(".purse").delay(600)
@@ -182,6 +181,8 @@ $(document).ready(function(){
 					 	"marginLeft":"-=230"
 					}, 600, "easeOutQuint")
 
+
+
 				$(".infographic").delay(750).slideDown();
 
 				$(".spend-title").delay(1300).animate({
@@ -221,9 +222,18 @@ $(document).ready(function(){
 					$(".whatToDo-wrapper").show();
 				});
 
+				// for(i = 0; i < 6; i++) {
+				// 	$(".pos" + i).delay(i * "450").show().animate({
+				// 		"top": "+=400"
+				// 	});
+				// }
+
+				// $(".overall, .whatToDo-wrapper").delay(1500).fadeIn();
+
+
 			}
 		}
-
+	};
 
 	// Проверка на лету 
 	var flyCheck = function() {
@@ -241,8 +251,14 @@ $(document).ready(function(){
 		$("#q8").change(jVal.mobileCheck);
 	};
 
+	// function number_format (str) {
+	//    return str.replace(/(\s)+/g, '').replace(/(\d{1,3})(?=(?:\d{3})+$)/g, '$1 ');
+	// }
+
 	$(".text-input").keyup(function(event){
 		var val = $(this).val();
+
+		// $(this).val(number_format ($(this).val()));
 
 		var people = $(this).parent().find(".people");
 		var lastChar = val.substring(val.toString().length - 1); // получаем последнюю цифру
@@ -271,9 +287,7 @@ $(document).ready(function(){
 		}
 	});
 
-	$('#calculate').click(function (){
-		//alert("Нажали кнопку");
-
+	$('.calculate').click(function (){
 		jVal.errors = false;
 		jVal.peoplesCheck();
 		jVal.socialCheck();
@@ -284,8 +298,9 @@ $(document).ready(function(){
 		jVal.smokersCheck();
 		jVal.mobileCheck();
 
-		createInfographics();
+		jVal.createInfographics();
 			
+		return false;
 	});
 
 	$(".try").click(function(){
@@ -295,7 +310,7 @@ $(document).ready(function(){
 
 
 
-	$("#whatToDo").click(function(){
+	$(".whatToDo").click(function(){
 		(function(d, s, id) {
 		  var js, fjs = d.getElementsByTagName(s)[0];
 		  if (d.getElementById(id)) return;
@@ -308,6 +323,7 @@ $(document).ready(function(){
 		var doc = $(document).height();
 		var rec = $(".recommendations").height()
 		var obj = $.browser.webkit ? $('body') : $('html');
+		console.log("rec " + rec)
 
 		$(".recommendations").slideDown(300);
 		$(obj).animate({
@@ -320,8 +336,6 @@ $(document).ready(function(){
 	var overallFinall = 0;
 
 	var calculate = function () {
-		//alert("Вычисляем инфографику");
-
 		//Получаем значения всех полей для их дальнейшей обработки
 		var peoplesOverall = parseInt($("#peoplesOverall").val());
 		var social = $("#q2").find("input:checked").prop("id");
@@ -332,17 +346,28 @@ $(document).ready(function(){
 		var lamps = $("#q6").find("input:checked").prop("id");
 		var smokers = parseInt($("#smokers").val());
 		var mobile = $("#q8").find("input:checked").prop("id");
-		
-		//alert("Получаем значения полей");
-
 		var str = document.location.href;
 		$.ajax({
-			url: 'answer.php?peoplesOverall='+peoplesOverall+"&social="+social+"&late="+late+"&wage="+wage+"&square="+square+"&lamps="+lamps+"&smokers="+smokers+"&mobile="+mobile,
+		url: 'answer.php?peoplesOverall='+peoplesOverall+"&social="+social+"&late="+late+"&wage="+wage+"&square="+square+"&lamps="+lamps+"&smokers="+smokers+"&mobile="+mobile,
 		});
+		console.log("peoplesOverall " + peoplesOverall)
+		console.log("social " + social)
+		console.log("late " + late)
+		console.log("pay " + pay)
+		console.log("square " + square)
+		console.log("lamps " + lamps)
+		console.log("smokers " + smokers)
+		console.log("mobile " + mobile)
+		console.log("____________________")
+
+
+
+
 
 	//Считаем время стоимость минуты работника
 		var workTime = peoplesOverall * 120000; //минут в год на всех человек
 		var workTimeCost = pay/workTime; //стоимость 1 минуты всех работников
+		console.log("Стоимость 1 минуты работника " + workTimeCost);
 
 	//Расход  лишнего времени на соц. сети
 		var loseTimeInSocial, loseTimeInSocialHrs, loseTimeInSocialCost;
@@ -354,12 +379,17 @@ $(document).ready(function(){
 
 			$("#advice-social").show();
 
+			//console.log("Вы теряете " + loseTimeInSocial + " минут в год на соц. сетях") 
+			//console.log("Вы теряете " + loseTimeInSocialCost + " рублей в год на соц. сетях") 
 		} else {
 			loseTimeInSocial = 0;
 			loseTimeInSocialCost = 0;
 			loseTimeInSocialHrs = 0;
 			$(".pos4 .monet-text").html('из-за социальных сетей')
+			//console.log("Вы экономите " + loseTimeInSocialCost + " минут в год на соц. сетях") // здесь код, который формирует инфографику
 		};
+
+
 
 	//Использование ламп 
 		var lumens = 300 * square;
@@ -369,22 +399,29 @@ $(document).ready(function(){
 		var lampsEconomy = lampsOverall - lampsResultPay; //Столько теряем в год и будем экономить если поставим нормальные лампы соответсвенно
 
 		if (lamps == "lampsYes") {
+			//console.log("Вы экономите на лампах накаливания " + lampsEconomy + " рублей в год") // здесь код, который формирует инфографику
 			lampsOverall = 0;
 			$(".pos1 .monet-text").html('из-за ламп накаливания');
 		} else {
 			$("#advice-lamps").show()
+			//console.log("Вы теряете на лампах накаливания " + lampsEconomy + " рублей в год") 
 		};
+
+		//console.log("Экономите на лампах " + lampsEconomy);
 
 	//Плата за ежедневные опаздания в год для всех сотрудников
 		var latePayMinutes = late * peoplesOverall * 250; // количество минут в год
 		var latePayHrs = Math.round(latePayMinutes/60);
 		var latePay = latePayMinutes * workTimeCost;
 
+		//console.log(latePayHrs)
 
 		if(late == 0) {
+			//console.log("Вы экономите на опозданиях");
 			$(".pos5 .monet-text").html('из-за опозданий')
 		} else {
 			$("#advice-late").show();
+			//console.log(latePayMinutes + " минут в год вы теряете на опозданиях ваших сотрудников");
 		}
 
 	//Убытки от курящих сотрудников
@@ -392,26 +429,37 @@ $(document).ready(function(){
 		var smokersTimeHrs = Math.round(smokersTimeMinutes/60);
 		var smokersTimeCost = workTimeCost * smokersTimeMinutes;
 		
+		console.log("Убытки от курильщиков в год " + smokersTimeCost);
+
 		if (smokers != 0){
 			$("#advice-smoke").show();
+			//console.log("Вы тратите на курящих сотрудников " + smokersTimeHrs + " часов в год");//количество часов в год
 		} else {
 			smokersTimeCost = 0;
 			$(".pos3 .monet-text").html("из-за перекуров")
+			//console.log("Вы экономите на курящих сотрудниках " + smokersTimeHrs + " часов в год")
 		}
 
 	//Убытки от использования обычных тарифов
 		
-		//SPB
-		var monthPayForTalk = 282;
-		var monthBenefitPercent = 50;
+		//Chelyabinsk
+		// var monthPayForTalk = 238;
+		// var monthBenefitPercent = 30;
+
+		//Tomsk
+		var monthPayForTalk = 203;
+		var monthBenefitPercent = 40;
 
 		var yearEconomyForTalk = Math.round( ( (monthPayForTalk/100) * monthBenefitPercent) * 12 * peoplesOverall)
+
 
 		if (mobile == "mobileYes") {
 			yearEconomyForTalk = 0;
 			$("#advice-mobile").show();
+			//console.log("Подключите тариф Tele2, так как он еще выгоднее")
 		} else {
 			$("#advice-mobile2").show();
+			//console.log("Вы можете сэкономить " + yearEconomyForTalk + " рублей в год на бизнес тарифах")
 		}
 
 	//Итого
@@ -419,17 +467,35 @@ $(document).ready(function(){
 		var overallSumm = Math.round((loseTimeInSocial + latePayMinutes + smokersTimeMinutes) * workTimeCost + lampsOverall + yearEconomyForTalk); //столько оплачиваем зря
 		if(overallSumm == 0) $(".overall").html("Осталось выяснить, на чем можно сэкономить");
 
+		//console.log("Итого вы тратите " + overallSumm + " рублей в год зря")
+		//console.log("___________________________________________________")
+
+		//Create infographics
+		
 
 	// Создаем монетки
 		
+		console.log("lampsOverall " + lampsOverall)
+		console.log("yearEconomyForTalk " + yearEconomyForTalk)
+		console.log("smokersTimeCost " + smokersTimeCost)
+		console.log("loseTimeInSocialCost " + loseTimeInSocialCost)
+		console.log("latePay " + latePay)
+
+		// createMonet($(".pos1"), lampsOverall);
+		// createMonet($(".pos2"), yearEconomyForTalk);
+		// createMonet($(".pos3"), smokersTimeCost, smokersTimeHrs);
+		// createMonet($(".pos4"), loseTimeInSocialCost, loseTimeInSocialHrs);
+		// createMonet($(".pos5"), latePay, latePayHrs);
+
 		var m1 = createMonet($(".pos1"), lampsOverall);
 		var m2 = createMonet($(".pos2"), yearEconomyForTalk);
 		var m3 = createMonet($(".pos3"), smokersTimeCost, smokersTimeHrs);
 		var m4 = createMonet($(".pos4"), loseTimeInSocialCost, loseTimeInSocialHrs);
 		var m5 = createMonet($(".pos5"), latePay, latePayHrs);
 
-		overallSumm = m1 + m2 + m3 + m4 + m5
 		
+		console.log(overallSumm = m1 + m2 + m3 + m4 + m5);	
+
 		overallSumm = overallSumm.toString().replace( /(?=\B(?:\d{3})+\b)/g, '<ins class="spacer">&nbsp;</ins>' );
 		var overallSummLastChar = overallSumm.toString().substring(overallSumm.toString().length - 1 );
 		var rubls = " рублей";
@@ -443,6 +509,19 @@ $(document).ready(function(){
 		}
 
 		$(".red").html(overallSumm + rubls);
+
+		// overallFinall = overallFinall.toString().replace( /(?=\B(?:\d{3})+\b)/g, '<ins class="spacer">&nbsp;</ins>' );
+		// var overallSummLastChar = overallFinall.toString().substring(overallSumm.toString().length - 1 );
+		// var rubls = " рублей";
+		
+		// if(overallFinall.length <= 3) {
+		// 	if (overallSummLastChar == 1) {
+		// 		rubls = " рубль"
+		// 	} else if (overallSummLastChar >= 2 && overallSummLastChar <=4) {
+		// 		rubls = " рубля"
+		// 	}
+		// }
+		// $(".red").html(overallFinall + rubls);
 	};
 
 	var createMonet = function(position, money, hrs){
@@ -563,19 +642,17 @@ $(document).ready(function(){
 		}
 
 	// Radio buttons
-	$(".button-small, .button-big").click(function() {
+	$(".button-small, .button-big").click(function(){
 		var wrapper = $(this).parents("dd");
 
 		wrapper.find("label").removeClass("checked");
 		wrapper.find("input").removeAttr("checked");
 
 		$(this).addClass("checked");
-		$(this).parent().find("input").attr("checked", "checked");
-
-		return false;
+		$(this).parent().find("input").attr("checked", "checked")
 	});
 	
-	$('.input-button').find('ins, input').click(function() {
+	$('.input-button').find('ins,input').click(function() {
 		var $this = $(this);
 		var form = $this.closest('form');
 		form.find('.message').css('visibility','hidden');
